@@ -1,0 +1,6 @@
+{
+  "welcome": "Welcome !",
+  "error": {
+    "message": "Oups ! This is an error page"
+  }
+}

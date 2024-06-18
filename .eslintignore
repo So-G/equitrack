@@ -1,0 +1,26 @@
+# Eslint configurations files.
+**.cjs
+**.js
+
+# Vite
+vite.config.ts
+src/vite-env.d.ts
+
+# Output
+dist/
+
+# Cache
+.cache/
+.caches/
+.sass-cache/
+typings/
+
+# Dependency directories
+node_modules/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Tests
+src/tests/__mocks__/
+src/tests/__fixtures__/

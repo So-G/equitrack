@@ -1,0 +1,16 @@
+# Output
+dist/
+
+# Cache
+.cache/
+.caches/
+.sass-cache/
+typings/
+
+# Dependency directories
+node_modules/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+**lock.yaml
