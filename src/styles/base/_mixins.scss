@@ -1,0 +1,33 @@
+@mixin fieldset {
+  border-top: 1px solid var(--navy-200);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  legend {
+    padding-right: 0.625rem;
+  }
+}
+
+@mixin fieldset-header {
+  border-radius: 0.375rem;
+  border: 1px solid var(--navy-500);
+  padding: 1.88rem;
+
+  .legend {
+    margin-inline: 0.75rem;
+  }
+}
+
+@mixin trackingSteps {
+  display: flex;
+  flex-direction: column;
+
+  &.details {
+    margin-top: 1.16rem;
+    margin-bottom: 2.88rem;
+    align-self: flex-end;
+  }
+  .summaryTable {
+    margin-bottom: 2.625rem;
+  }
+}

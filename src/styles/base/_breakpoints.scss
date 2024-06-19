@@ -1,0 +1,35 @@
+$xs: breakpoints.$width-xs;
+$sm: breakpoints.$width-sm;
+$md: breakpoints.$width-md;
+$lg: breakpoints.$width-lg;
+$xl: breakpoints.$width-xl;
+
+@mixin x-small {
+  @media (max-width: #{$xs}) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (min-width: #{$sm}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: #{$md}) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: #{$lg}) {
+    @content;
+  }
+}
+
+@mixin x-large {
+  @media (min-width: #{$xl}) {
+    @content;
+  }
+}

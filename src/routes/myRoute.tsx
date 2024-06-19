@@ -3,11 +3,18 @@ import { RoutePath } from './routes.enum'
 import Dummy from 'components/Dummy/Dummy'
 import Error from 'components/Error/Error'
 import Home from 'components/Home/Home'
+import Admin from 'components/Admin/Admin'
+import Layout from 'components/Layout/Layout'
 
 export const myRoutes = createBrowserRouter([
   {
     path: RoutePath.HOME,
-    element: <Outlet />,
+    element: (
+      <Layout>
+        <Outlet />
+      </Layout>
+    ),
+
     errorElement: <Navigate to={RoutePath.ERROR} replace={true} />,
     children: [
       { index: true, element: <Home /> },
@@ -17,7 +24,11 @@ export const myRoutes = createBrowserRouter([
       },
       {
         path: RoutePath.ADMIN,
-        element: <Dummy />
+        element: (
+          <Layout>
+            element: <Admin />
+          </Layout>
+        )
       }
     ]
   },
