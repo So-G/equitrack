@@ -14,7 +14,6 @@ export const myRoutes = createBrowserRouter([
         <Outlet />
       </Layout>
     ),
-
     errorElement: <Navigate to={RoutePath.ERROR} replace={true} />,
     children: [
       { index: true, element: <Home /> },
@@ -24,11 +23,7 @@ export const myRoutes = createBrowserRouter([
       },
       {
         path: RoutePath.ADMIN,
-        element: (
-          <Layout>
-            element: <Admin />
-          </Layout>
-        )
+        element: <Admin />
       }
     ]
   },

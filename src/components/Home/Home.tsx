@@ -15,15 +15,7 @@ const Home: FC = () => {
 
   return (
     <div className="page">
-      <Avatar size="md" name="So Gd" src="" bg="turquoise" />
       <h1>{t('welcome')}</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input placeholder={t('enterName')} {...register('name')} />
-
-        <Button colorScheme="teal" type="submit" onClick={() => alert(`hello `)}>
-          {t('clickMe')}
-        </Button>
-      </form>
     </div>
   )
 }
