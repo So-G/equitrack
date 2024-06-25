@@ -16,6 +16,7 @@ const Home: FC = () => {
   return (
     <div className="page">
       <h1>{t('welcome')}</h1>
+      <p>Elle vous permet de gérer vos cours, points de concours, etc...</p>
     </div>
   )
 }

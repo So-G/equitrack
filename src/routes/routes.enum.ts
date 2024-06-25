@@ -2,5 +2,6 @@ export enum RoutePath {
   HOME = '/',
   ADMIN = 'admin',
   ERROR = 'error',
-  DUMMY = 'dummy'
+  DUMMY = 'dummy',
+  TABLE = 'table'
 }
