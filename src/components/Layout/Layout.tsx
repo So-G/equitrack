@@ -10,7 +10,6 @@ import {
   PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
   Button,
   Avatar
 } from '@chakra-ui/react'
@@ -43,7 +42,7 @@ const Layout: FC<LayoutProps> = ({ children, fullWidth = false }) => {
           <div className={styles.appbar__right}>
             <Popover placement="bottom" closeOnBlur={false}>
               <PopoverTrigger>
-                <Avatar size="md" name="So Gd" bg="turquoise" />
+                <Avatar size="md" name="So Gd" bg="#a4c3b2" />
               </PopoverTrigger>
               <PopoverContent color="white" bg="#d5c5c8" borderColor="#d5c5c8">
                 <PopoverHeader pt={4} fontWeight="bold" border="0">
@@ -64,9 +63,6 @@ const Layout: FC<LayoutProps> = ({ children, fullWidth = false }) => {
                 >
                   <Button colorScheme="green" onClick={() => navigate(RoutePath.ADMIN)}>
                     Go to your admin page
-                  </Button>
-                  <Button colorScheme="blue" onClick={() => navigate(RoutePath.HOME)}>
-                    Home
                   </Button>
                 </PopoverFooter>
               </PopoverContent>

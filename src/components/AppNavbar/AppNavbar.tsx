@@ -25,7 +25,12 @@ const AppNavbar: FC = () => {
           >
             Tableau
           </Tab>
-          <Tab _selected={{ color: '#ffdbda', bg: '#db7f8e' }}>Three</Tab>
+          <Tab
+            _selected={{ color: '#ffdbda', bg: '#db7f8e' }}
+            onClick={() => navigate(RoutePath.COMPETITION)}
+          >
+            Concours
+          </Tab>
         </TabList>
       </Tabs>
     </div>

@@ -9,9 +9,6 @@ type Inputs = {
 
 const Home: FC = () => {
   const { t } = useTranslation()
-  const { register, handleSubmit } = useForm()
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
 
   return (
     <div className="page">

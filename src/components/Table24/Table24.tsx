@@ -6,32 +6,35 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
+import { Day } from 'enums/day.enum'
+import { Discipline } from 'enums/discipline.enum'
+import { getShortDate } from 'helpers/date.helper'
 import { useState } from 'react'
-import { Class } from 'types/class.interface'
+import { Class } from 'types/class.type'
 
 const defaultData: Class[] = [
   {
     horse: 'tanner',
-    date: 'linsley',
-    day: 24,
-    instructor: 100,
-    discipline: 'In Relationship',
+    date: '2021-12-21',
+    day: 'Lundi' as Day,
+    instructor: 'B',
+    discipline: 'Jumping' as Discipline,
     rating: 50
   },
   {
     horse: 'tandy',
-    date: 'miller',
-    day: 40,
-    instructor: 40,
-    discipline: 'Single',
+    date: '21/12/2021',
+    day: Day.MONDAY,
+    instructor: 'C',
+    discipline: Discipline.CROSS,
     rating: 80
   },
   {
     horse: 'joe',
-    date: 'dirte',
-    day: 45,
-    instructor: 20,
-    discipline: 'Complicated',
+    date: '2021-12-21',
+    day: Day.MONDAY,
+    instructor: 'A',
+    discipline: 'Dressage' as Discipline,
     rating: 10
   }
 ]
@@ -40,31 +43,23 @@ const columnHelper = createColumnHelper<Class>()
 
 const columns = [
   columnHelper.accessor('horse', {
-    cell: (info) => info.getValue(),
-    footer: (info) => info.column.id
+    cell: (info) => info.getValue()
   }),
-  columnHelper.accessor((row) => row.date, {
-    id: 'date',
-    cell: (info) => <i>{info.getValue()}</i>,
-    header: () => <span>Last Name</span>,
-    footer: (info) => info.column.id
+  columnHelper.accessor('date', {
+    cell: (info) => getShortDate(info.getValue())
   }),
   columnHelper.accessor('day', {
     header: () => 'day',
-    cell: (info) => info.renderValue(),
-    footer: (info) => info.column.id
+    cell: (info) => info.renderValue()
   }),
   columnHelper.accessor('instructor', {
-    header: () => <span>instructor</span>,
-    footer: (info) => info.column.id
+    header: () => <span>instructor</span>
   }),
   columnHelper.accessor('discipline', {
-    header: 'Status',
-    footer: (info) => info.column.id
+    header: 'Discipline'
   }),
   columnHelper.accessor('rating', {
-    header: 'Profile Progress',
-    footer: (info) => info.column.id
+    header: 'Rating'
   })
 ]
 export const Table24 = () => {
