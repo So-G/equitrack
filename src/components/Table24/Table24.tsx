@@ -11,7 +11,7 @@ import { Discipline } from 'enums/discipline.enum'
 import { getShortDate } from 'helpers/date.helper'
 import { useState } from 'react'
 import { Class } from 'types/class.type'
-
+import styles from './table.module.scss'
 const defaultData: Class[] = [
   {
     horse: 'tanner',
@@ -72,17 +72,15 @@ export const Table24 = () => {
   })
 
   return (
-    <div>
-      <TableContainer>
+    <div className={styles.tablePage}>
+      <TableContainer className={styles.table}>
         <Table>
           <Thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <Tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <Th key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                    {flexRender(header.column.columnDef.header, header.getContext())}
                   </Th>
                 ))}
               </Tr>
