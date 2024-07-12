@@ -2,9 +2,6 @@ import { useState } from 'react'
 
 const AddHorseForm = () => {
   const [name, setName] = useState('')
-  const [breed, setBreed] = useState('')
-  const [age, setAge] = useState(0)
-  const [color, setColor] = useState('')
 
   const handleAddHorse = () => {
     console.log('adding horse')

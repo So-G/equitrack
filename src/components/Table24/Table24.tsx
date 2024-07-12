@@ -45,12 +45,12 @@ const columns = [
   columnHelper.accessor('horse', {
     cell: (info) => info.getValue()
   }),
-  columnHelper.accessor('date', {
-    cell: (info) => getShortDate(info.getValue())
-  }),
   columnHelper.accessor('day', {
     header: () => 'day',
     cell: (info) => info.renderValue()
+  }),
+  columnHelper.accessor('date', {
+    cell: (info) => getShortDate(info.getValue())
   }),
   columnHelper.accessor('instructor', {
     header: () => <span>instructor</span>
