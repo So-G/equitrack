@@ -1,12 +1,10 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 
-import { useTranslation } from 'react-i18next'
-import { Route, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { RoutePath } from 'routes/routes.enum'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import { Tabs, TabList, Tab } from '@chakra-ui/react'
 
 const AppNavbar: FC = () => {
-  const { t } = useTranslation()
   const navigate = useNavigate()
 
   return (
@@ -21,15 +19,21 @@ const AppNavbar: FC = () => {
           </Tab>
           <Tab
             _selected={{ color: '#ffdbda', bg: '#db7f8e' }}
-            onClick={() => navigate(RoutePath.TABLE)}
+            onClick={() => navigate(RoutePath.CLASSES)}
           >
-            Tableau
+            Cours
           </Tab>
           <Tab
             _selected={{ color: '#ffdbda', bg: '#db7f8e' }}
             onClick={() => navigate(RoutePath.COMPETITION)}
           >
             Concours
+          </Tab>
+          <Tab
+            _selected={{ color: '#ffdbda', bg: '#db7f8e' }}
+            onClick={() => navigate(RoutePath.ADMIN)}
+          >
+            Admin
           </Tab>
         </TabList>
       </Tabs>

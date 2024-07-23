@@ -1,7 +1,11 @@
 const Shows = () => {
   return (
     <div>
-      <h1>Shows</h1>
+      <p>date</p>
+      <p>location</p>
+      <p>épreuve</p>
+      <p>cheval</p>
+      <p>classement</p>
     </div>
   )
 }
