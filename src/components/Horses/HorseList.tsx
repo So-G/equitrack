@@ -69,7 +69,6 @@ const HorseList = () => {
             ))}
           </Thead>
           <Tbody>
-            {' '}
             {table.getRowModel().rows.map((row) => (
               <Tr key={row.id}>
                 {row.getVisibleCells().map((cell) => (

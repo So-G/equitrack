@@ -3,8 +3,11 @@
 .tablePage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: colors.$dusky-cocoa;
+}
+
+.content {
+  margin-top: 3rem;
 }

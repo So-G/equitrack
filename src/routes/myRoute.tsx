@@ -36,7 +36,7 @@ export const myRoutes = createBrowserRouter([
           },
           {
             path: RoutePath.ADMIN,
-            element: <Admin /> // Ensure Admin is set correctly
+            element: <Admin />
           },
           {
             path: RoutePath.ADMIN_HORSES,

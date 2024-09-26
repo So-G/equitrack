@@ -12,6 +12,7 @@ import { getShortDate } from 'helpers/date.helper'
 import { useState } from 'react'
 import { Class } from 'types/class.type'
 import styles from './table.module.scss'
+
 const defaultData: Class[] = [
   {
     horse: 'tanner',
