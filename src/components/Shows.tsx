@@ -3,6 +3,7 @@ import { CompetitionTable } from './Table24/CompetitionTable'
 import { useEffect, useState } from 'react'
 import { Round } from 'types/round.type'
 import { Button } from '@chakra-ui/react'
+import styles from './shows.module.scss'
 
 const Shows = () => {
   const [competitions, setCompetitions] = useState<Round[]>([]) // Utilise l'état pour stocker les données
@@ -35,11 +36,11 @@ const Shows = () => {
 
   return (
     <div>
-      <Button colorScheme="blue" onClick={() => console.log('add round')}>
+      <Button bg="black" color="white" onClick={() => console.log('add round')}>
         Ajouter une compétition
       </Button>
       <CompetitionTable data={competitions} />
-      <p>Total Points : </p>
+      <p className={styles.total}>Total Points : </p>
     </div>
   )
 }
