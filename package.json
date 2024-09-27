@@ -9,9 +9,9 @@
     "test:cov": "react-scripts test --coverage ."
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.7",
     "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.17",
-    "@babel/plugin-proposal-private-property-in-object": "^7.16.7"
+    "postcss": "^8.4.17"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
@@ -25,6 +25,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "add": "^2.0.6",
+    "axios": "^1.7.7",
     "classnames": "^2.5.1",
     "firebase": "^10.13.2",
     "framer-motion": "^11.2.10",
