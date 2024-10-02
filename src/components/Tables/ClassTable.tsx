@@ -63,7 +63,7 @@ const columns = [
     header: 'Rating'
   })
 ]
-export const Table24 = () => {
+export const ClassTable = () => {
   const [data, _setData] = useState(() => [...defaultData])
 
   const table = useReactTable({

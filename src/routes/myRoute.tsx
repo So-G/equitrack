@@ -4,11 +4,11 @@ import Error from 'components/Error/Error'
 import Home from 'pages/Home/Home'
 import Admin from 'components/Admin/Admin'
 import Layout from 'components/Layout/Layout'
-import { YearlyTable } from 'pages/YearlyTable/YearlyTable'
-import Competition from 'pages/Competitions/Competition'
+import { Competition } from 'pages/Competitions/Competition'
 import HorseView from 'pages/HorseView/HorseView'
 import NewHorse from 'pages/NewHorse/NewHorse'
 import InstructorsView from 'pages/InstructorsView/InstructorsView'
+import { Class } from 'pages/Class/Class'
 
 export const myRoutes = createBrowserRouter([
   {
@@ -28,7 +28,7 @@ export const myRoutes = createBrowserRouter([
           },
           {
             path: RoutePath.CLASSES,
-            element: <YearlyTable />
+            element: <Class />
           },
           {
             path: RoutePath.COMPETITION,

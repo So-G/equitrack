@@ -8,3 +8,10 @@
   height: 100vh;
   background-color: colors.$dusky-cocoa;
 }
+
+.total {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}

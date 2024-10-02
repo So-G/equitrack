@@ -43,7 +43,7 @@ export const CompetitionTable = ({ data }: { data: Round[] }) => {
   return (
     <div className={styles.tablePage}>
       <TableContainer className={styles.table}>
-        <Table>
+        <Table variant="striped" colorScheme="pink">
           <Thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <Tr key={headerGroup.id}>

@@ -15,16 +15,16 @@ export async function getCompetitions() {
 
 export async function addRound(round: Round) {
   try {
-    // Ajoute un nouveau document dans la collection "rounds" avec un ID généré automatiquement
-    const docRef = await addDoc(collection(db, 'rounds'), {
+    const docRef = await addDoc(collection(db, 'round'), {
       ...round,
-      date: round.date // Firestore accepte les objets `Date` et les convertit en timestamp
+      date: round.date,
+      season: '2024-2025'
     })
 
-    console.log('Round added successfully with ID:', docRef.id) // Log l'ID généré
-    return docRef.id // Retourne l'ID généré du document ajouté
+    console.log('🎉 Round added successfully with ID: ', docRef.id)
+    return docRef.id
   } catch (error) {
-    console.error('Error adding round:', error) // Gère les erreurs
-    throw error // Propage l'erreur si nécessaire
+    console.error('👻 Error adding round:', error)
+    throw error
   }
 }

@@ -1,0 +1,9 @@
+.react-datepicker {
+  background-color: plum !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: purple !important;
+}

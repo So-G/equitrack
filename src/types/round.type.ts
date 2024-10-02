@@ -1,9 +1,12 @@
 export type Round = {
-  id: string
+  id?: string
   date: string
   location: string
   horse: string
   category: string
   ranking: string
-  points: string
+  points: number
+  result: string
+  season: string
+  participants?: string
 }
