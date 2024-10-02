@@ -42,19 +42,21 @@ export const Competition = () => {
 
   return (
     <div className={styles.competitionPage}>
-      <h1>Competition</h1>
-      <Button
-        bg="black"
-        color="white"
-        onClick={() => {
-          setIsModalOpen(true)
-        }}
-      >
-        Ajouter une compétition
-      </Button>
-      <CompetitionTable data={competitions} />
-      <p className={styles.total}>Total Points : {totalPoints} </p>{' '}
-      <NewRoundModal isOpen={isModalOpen} />
+      <div className={styles.content}>
+        <h1>Competition</h1>
+        <Button
+          bg="black"
+          color="white"
+          onClick={() => {
+            setIsModalOpen(true)
+          }}
+        >
+          Ajouter une compétition
+        </Button>
+        <CompetitionTable data={competitions} />
+        <p className={styles.total}>Total Points : {totalPoints} </p>{' '}
+        <NewRoundModal isOpen={isModalOpen} />
+      </div>
     </div>
   )
 }

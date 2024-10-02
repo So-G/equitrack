@@ -1,7 +1,7 @@
 @use 'styles/base/colors';
 
-// .page {
-//   // height: 100%;
-//   width: 100%;
-//   background-color: $dusky-cocoa;
-// }
+.page {
+  height: 100%;
+  width: 100%;
+  background-color: colors.$dusky-cocoa;
+}

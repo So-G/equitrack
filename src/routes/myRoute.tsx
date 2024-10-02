@@ -5,10 +5,11 @@ import Home from 'pages/Home/Home'
 import Admin from 'components/Admin/Admin'
 import Layout from 'components/Layout/Layout'
 import { Competition } from 'pages/Competitions/Competition'
-import HorseView from 'pages/HorseView/HorseView'
+import { Horse } from 'pages/Horse/Horse'
 import NewHorse from 'pages/NewHorse/NewHorse'
 import InstructorsView from 'pages/InstructorsView/InstructorsView'
 import { Class } from 'pages/Class/Class'
+import Home2 from 'pages/Home/Home2'
 
 export const myRoutes = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ export const myRoutes = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Home />
+            element: <Home2 />
           },
           {
             path: RoutePath.CLASSES,
@@ -40,7 +41,7 @@ export const myRoutes = createBrowserRouter([
           },
           {
             path: RoutePath.ADMIN_HORSES,
-            element: <HorseView />
+            element: <Horse />
           },
           {
             path: RoutePath.ADMIN_NEW_HORSE,

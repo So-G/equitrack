@@ -6,7 +6,7 @@ import NewClassModal from 'components/Modal/NewClassModal'
 
 export const Class = () => {
   return (
-    <div className={styles.tablePage}>
+    <div className={styles.classPage}>
       <div className={styles.content}>
         <Button
           bg="black"

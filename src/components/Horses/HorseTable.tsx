@@ -13,19 +13,16 @@ const defaultData: Horse[] = [
   {
     name: 'tanner',
     color: 'brown',
-    age: 12,
     rating: 50
   },
   {
     name: 'tandy',
     color: 'black',
-    age: 10,
     rating: 80
   },
   {
     name: 'joe',
     color: 'white',
-    age: 5,
     rating: 10
   }
 ]
@@ -38,7 +35,7 @@ const columns = [
   columnHelper.accessor('color', {
     header: 'Color'
   }),
-  columnHelper.accessor('age', {
+  columnHelper.accessor('dob', {
     header: 'Age'
   }),
   columnHelper.accessor('rating', {
@@ -46,7 +43,7 @@ const columns = [
   })
 ]
 
-const HorseList = () => {
+export const HorseTable = () => {
   const [data, _setData] = useState(() => [...defaultData])
   const table = useReactTable({
     data,
@@ -82,5 +79,3 @@ const HorseList = () => {
     </div>
   )
 }
-
-export default HorseList
