@@ -6,7 +6,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  useDisclosure,
   Button,
   Input,
   Stack,
@@ -34,15 +33,15 @@ type FormValues = {
 
 interface NewRoundModalProps {
   isOpen: boolean
+  onClose: () => void
 }
 
-const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen }) => {
+const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<FormValues>()
-  const { onClose } = useDisclosure()
 
   const [startDate, setStartDate] = useState(new Date())
 

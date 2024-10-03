@@ -1,11 +1,12 @@
 import { Discipline } from 'enums/discipline.enum'
 import { Day } from 'enums/day.enum'
 
-export type Class = {
+export type Lesson = {
+  id?: string
   horse: string
   date: string
   day: Day
-  instructor: string
+  coach: string
   discipline: Discipline
   rating: number
   showMore?: string

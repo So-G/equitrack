@@ -6,7 +6,6 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
-import { Timestamp } from 'firebase/firestore'
 import { getShortDate } from 'helpers/date.helper'
 import { Horse } from 'types/horse.type'
 
@@ -19,8 +18,8 @@ const columns = [
     header: 'Couleur'
   }),
   columnHelper.accessor('dob', {
-    header: 'Date de Naissance',
-    cell: (info) => getShortDate(info.getValue().toDate()) // Utilisez getShortDate ici
+    header: 'Date de naissance',
+    cell: (info) => getShortDate(info.getValue().toString())
   }),
 
   columnHelper.accessor('rating', {
@@ -34,14 +33,6 @@ export const HorseTable = ({ data }: { data: Horse[] }) => {
     columns,
     getCoreRowModel: getCoreRowModel()
   })
-
-  const bday = data.map((horse) => {
-    const dob = horse.dob
-    const date = dob.toDate() // Convert Timestamp to Date
-    return getShortDate(date) // Format the date as desired
-  })
-
-  console.log('bday 🏇🏻', bday)
 
   return (
     <div>

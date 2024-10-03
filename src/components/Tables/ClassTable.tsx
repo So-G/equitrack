@@ -6,41 +6,11 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
-import { Day } from 'enums/day.enum'
-import { Discipline } from 'enums/discipline.enum'
 import { getShortDate } from 'helpers/date.helper'
-import { useState } from 'react'
-import { Class } from 'types/class.type'
+import { Lesson } from 'types/lesson.type'
 import styles from './table.module.scss'
 
-const defaultData: Class[] = [
-  {
-    horse: 'tanner',
-    date: '2021-12-21',
-    day: 'Lundi' as Day,
-    instructor: 'B',
-    discipline: 'Jumping' as Discipline,
-    rating: 50
-  },
-  {
-    horse: 'tandy',
-    date: '21/12/2021',
-    day: Day.MONDAY,
-    instructor: 'C',
-    discipline: Discipline.CROSS,
-    rating: 80
-  },
-  {
-    horse: 'joe',
-    date: '2021-12-21',
-    day: Day.MONDAY,
-    instructor: 'A',
-    discipline: 'Dressage' as Discipline,
-    rating: 10
-  }
-]
-
-const columnHelper = createColumnHelper<Class>()
+const columnHelper = createColumnHelper<Lesson>()
 
 const columns = [
   columnHelper.accessor('horse', {
@@ -53,19 +23,19 @@ const columns = [
   columnHelper.accessor('date', {
     cell: (info) => getShortDate(info.getValue())
   }),
-  columnHelper.accessor('instructor', {
-    header: () => <span>instructor</span>
+  columnHelper.accessor('coach', {
+    cell: (info) => info.renderValue()
   }),
   columnHelper.accessor('discipline', {
-    header: 'Discipline'
+    header: 'Discipline',
+    cell: (info) => info.renderValue()
   }),
   columnHelper.accessor('rating', {
-    header: 'Rating'
+    header: 'Rating',
+    cell: (info) => info.renderValue()
   })
 ]
-export const ClassTable = () => {
-  const [data, _setData] = useState(() => [...defaultData])
-
+export const ClassTable = ({ data }: { data: Lesson[] }) => {
   const table = useReactTable({
     data,
     columns,

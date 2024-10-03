@@ -10,6 +10,7 @@ export const Competition = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [competitions, setCompetitions] = useState<Round[]>([])
 
+  const closeModal = () => setIsModalOpen(false)
   const transformToRounds = (rounds: any[]): Round[] => {
     return rounds.map((round) => ({
       id: round.id,
@@ -56,7 +57,7 @@ export const Competition = () => {
         </Button>
         <CompetitionTable data={competitions} />
         <p className={styles.total}>Total Points : {totalPoints} </p>{' '}
-        <NewRoundModal isOpen={isModalOpen} />
+        <NewRoundModal isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </div>
   )

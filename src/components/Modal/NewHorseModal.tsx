@@ -97,8 +97,8 @@ export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose }) => {
                 size="md"
               />
               <ModalFooter>
-                <Button type="submit" bg="black">
-                  Add
+                <Button type="submit" bg="black" color="white">
+                  Ajouter
                 </Button>
               </ModalFooter>
             </Stack>
