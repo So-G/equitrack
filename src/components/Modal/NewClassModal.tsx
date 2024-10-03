@@ -52,10 +52,10 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
 
         const mappedHorses: Horse[] = horsesData.map((horse: any) => ({
           id: horse.id, // Assurez-vous que chaque cheval a un id
-          name: horse.name || 'Inconnu', // Si name est manquant, utilisez une valeur par défaut
-          color: horse.color || 'Inconnu', // Pareil pour color
-          dob: horse.dob || new Date(), // S'il manque dob, utilisez la date du jour par défaut
-          breed: horse.breed || 'Unknown', // Valeur par défaut pour breed
+          name: horse.name,
+          color: horse.color,
+          dob: horse.dob,
+          breed: horse.breed,
           rating: horse.rating || 0 // Valeur par défaut pour rating
         }))
 
