@@ -1,7 +1,6 @@
 import { addDoc, collection, getDocs } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Horse } from 'types/horse.type'
-import exp from 'constants'
 
 export async function getHorses() {
   try {
@@ -17,11 +16,7 @@ export async function getHorses() {
 export async function addHorse(horse: Horse) {
   try {
     const docRef = await addDoc(collection(db, 'horse'), {
-      ...horse,
-      name: horse.name,
-      color: horse.color,
-      dob: horse.dob,
-      rating: horse.rating
+      ...horse
     })
 
     console.log('🏇🏻 Horse added successfully with ID: ', docRef.id)

@@ -9,6 +9,7 @@ import { CompetitionTable } from 'components/Tables/CompetitionTable'
 export const Competition = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [competitions, setCompetitions] = useState<Round[]>([])
+
   const transformToRounds = (rounds: any[]): Round[] => {
     return rounds.map((round) => ({
       id: round.id,

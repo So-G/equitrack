@@ -5,8 +5,7 @@ import Home from 'pages/Home/Home'
 import Admin from 'components/Admin/Admin'
 import Layout from 'components/Layout/Layout'
 import { Competition } from 'pages/Competitions/Competition'
-import { Horse } from 'pages/Horse/Horse'
-import NewHorse from 'pages/NewHorse/NewHorse'
+import { HorsePage } from 'pages/Horse/Horse'
 import InstructorsView from 'pages/InstructorsView/InstructorsView'
 import { Class } from 'pages/Class/Class'
 import Home2 from 'pages/Home/Home2'
@@ -41,11 +40,7 @@ export const myRoutes = createBrowserRouter([
           },
           {
             path: RoutePath.ADMIN_HORSES,
-            element: <Horse />
-          },
-          {
-            path: RoutePath.ADMIN_NEW_HORSE,
-            element: <NewHorse />
+            element: <HorsePage />
           },
           {
             path: RoutePath.ADMIN_INSTRUCTORS,

@@ -6,50 +6,43 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
-import { useState } from 'react'
+import { Timestamp } from 'firebase/firestore'
+import { getShortDate } from 'helpers/date.helper'
 import { Horse } from 'types/horse.type'
-
-const defaultData: Horse[] = [
-  {
-    name: 'tanner',
-    color: 'brown',
-    rating: 50
-  },
-  {
-    name: 'tandy',
-    color: 'black',
-    rating: 80
-  },
-  {
-    name: 'joe',
-    color: 'white',
-    rating: 10
-  }
-]
 
 const columnHelper = createColumnHelper<Horse>()
 const columns = [
   columnHelper.accessor('name', {
-    header: 'Name'
+    header: 'Nom'
   }),
   columnHelper.accessor('color', {
-    header: 'Color'
+    header: 'Couleur'
   }),
   columnHelper.accessor('dob', {
-    header: 'Age'
+    header: 'Date de Naissance',
+    cell: (info) => getShortDate(info.getValue().toDate()) // Utilisez getShortDate ici
   }),
+
   columnHelper.accessor('rating', {
     header: 'Rating'
   })
 ]
 
-export const HorseTable = () => {
-  const [data, _setData] = useState(() => [...defaultData])
+export const HorseTable = ({ data }: { data: Horse[] }) => {
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel()
   })
+
+  const bday = data.map((horse) => {
+    const dob = horse.dob
+    const date = dob.toDate() // Convert Timestamp to Date
+    return getShortDate(date) // Format the date as desired
+  })
+
+  console.log('bday 🏇🏻', bday)
+
   return (
     <div>
       <TableContainer>

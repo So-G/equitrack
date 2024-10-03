@@ -9,8 +9,6 @@ const Admin: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div className={styles.adminPage}>
-      <h1>Hello Admin</h1>
-      <p>Bienvenue dans cet espace vous permettant de gérer vos chevaux, instructeurs, etc...</p>
       <Button
         bg="#e06c9f"
         color="white"
