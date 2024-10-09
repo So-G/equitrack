@@ -1,14 +1,18 @@
 import React, { FC } from 'react'
+import { signOut } from 'firebase/auth'
 
 import { useNavigate } from 'react-router-dom'
 import { RoutePath } from 'routes/routes.enum'
 import { Tabs, TabList, Tab, Button } from '@chakra-ui/react'
 import './appNavbar.scss'
+import { auth } from '../../firebase'
+
 const AppNavbar: FC = () => {
   const navigate = useNavigate()
 
-  const signOut = () => {
-    console.log('Déconnexion')
+  const signOutFromApp = async () => {
+    await signOut(auth)
+    console.log('Utilisateur déconnecté 🔌')
     navigate(RoutePath.SIGNIN)
   }
 
@@ -44,7 +48,7 @@ const AppNavbar: FC = () => {
           >
             Admin
           </Tab>
-          <Button bg="#e06c9f" color="white" onClick={signOut}>
+          <Button bg="#e06c9f" color="white" onClick={signOutFromApp}>
             Déconnexion
           </Button>
         </TabList>

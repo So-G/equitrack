@@ -36,7 +36,7 @@ export const Class = () => {
     }
 
     fetchClasses()
-  }, [lessons])
+  }, [])
 
   const closeModal = () => setIsModalOpen(false)
 
