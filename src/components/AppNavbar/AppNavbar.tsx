@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { useNavigate } from 'react-router-dom'
 import { RoutePath } from 'routes/routes.enum'
-import { Tabs, TabList, Tab } from '@chakra-ui/react'
+import { Tabs, TabList, Tab, Button } from '@chakra-ui/react'
 import './appNavbar.scss'
 const AppNavbar: FC = () => {
   const navigate = useNavigate()
@@ -39,6 +39,9 @@ const AppNavbar: FC = () => {
           >
             Admin
           </Tab>
+          <Button bg="#e06c9f" color="white" onClick={() => navigate(RoutePath.SIGNIN)}>
+            Déconnexion
+          </Button>
         </TabList>
       </Tabs>
     </div>

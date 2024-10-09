@@ -1,4 +1,3 @@
-import { CalendarIcon } from '@chakra-ui/icons'
 import {
   Modal,
   ModalOverlay,
@@ -12,7 +11,6 @@ import {
   Stack
 } from '@chakra-ui/react'
 import { FC, useEffect, useState } from 'react'
-import DatePicker from 'react-datepicker'
 import { Discipline } from 'enums/discipline.enum'
 import { getHorses } from 'services/horses.service'
 import { SubmitHandler, useForm } from 'react-hook-form'

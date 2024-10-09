@@ -15,7 +15,7 @@ export const HorsePage = () => {
       id: horse.id,
       name: horse.name,
       color: horse.color,
-      breed: horse.breed || '',
+      breed: horse.breed,
       dob: horse.dob,
       rating: horse.rating || 0
     }))

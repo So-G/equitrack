@@ -1,0 +1,23 @@
+@use '../../styles/base/colors';
+
+.signinPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: colors.$charcoal-blue;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50vw;
+}
+
+#email,
+password {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}

@@ -9,6 +9,9 @@ import { HorsePage } from 'pages/Horse/Horse'
 import InstructorsView from 'pages/InstructorsView/InstructorsView'
 import { Class } from 'pages/Class/Class'
 import Home2 from 'pages/Home/Home2'
+import { SignUp } from 'pages/SignUp/SignUp'
+import { SignIn } from 'pages/SignIn/SignIn' // Create a SignIn component if you don't have one
+import ProtectedRoute from 'routes/ProtectedRoute'
 
 export const myRoutes = createBrowserRouter([
   {
@@ -23,28 +26,41 @@ export const myRoutes = createBrowserRouter([
         ),
         children: [
           {
-            index: true,
+            path: RoutePath.SIGNIN,
+            element: <SignIn />
+          },
+          {
+            path: RoutePath.SIGNUP,
+            element: <SignUp />
+          },
+          {
+            path: RoutePath.HOME,
             element: <Home2 />
           },
           {
-            path: RoutePath.CLASSES,
-            element: <Class />
-          },
-          {
-            path: RoutePath.COMPETITION,
-            element: <Competition />
-          },
-          {
-            path: RoutePath.ADMIN,
-            element: <Admin />
-          },
-          {
-            path: RoutePath.ADMIN_HORSES,
-            element: <HorsePage />
-          },
-          {
-            path: RoutePath.ADMIN_INSTRUCTORS,
-            element: <InstructorsView />
+            element: <ProtectedRoute />, // All routes under this require authentication
+            children: [
+              {
+                path: RoutePath.CLASSES,
+                element: <Class />
+              },
+              {
+                path: RoutePath.COMPETITION,
+                element: <Competition />
+              },
+              {
+                path: RoutePath.ADMIN,
+                element: <Admin />
+              },
+              {
+                path: RoutePath.ADMIN_HORSES,
+                element: <HorsePage />
+              },
+              {
+                path: RoutePath.ADMIN_INSTRUCTORS,
+                element: <InstructorsView />
+              }
+            ]
           }
         ]
       }
