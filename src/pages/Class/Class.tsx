@@ -11,7 +11,6 @@ export const Class = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [lessons, setLessons] = useState<Lesson[]>([])
 
-  const closeModal = () => setIsModalOpen(false)
   const lessonsMapper = (lessons: any[]): Lesson[] => {
     return lessons.map((lesson) => ({
       id: lesson.id,
@@ -37,7 +36,9 @@ export const Class = () => {
     }
 
     fetchClasses()
-  }, [])
+  }, [lessons])
+
+  const closeModal = () => setIsModalOpen(false)
 
   return (
     <div className={styles.classPage}>

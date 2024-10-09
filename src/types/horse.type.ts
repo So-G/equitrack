@@ -4,7 +4,7 @@ export type Horse = {
   id?: string
   name: string
   color: string
-  dob: Timestamp
+  dob?: Timestamp
   rating?: number
   breed?: string
 }

@@ -49,7 +49,7 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
         const horsesData = await getHorses()
 
         const mappedHorses: Horse[] = horsesData.map((horse: any) => ({
-          id: horse.id, // Assurez-vous que chaque cheval a un id
+          id: horse.id,
           name: horse.name,
           color: horse.color,
           dob: horse.dob,
@@ -76,8 +76,7 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
         coach: data.coach,
         rating: data.rating || 0
       }
-      const createClass = await addClass(newClass)
-      console.log('Class created:', createClass)
+      await addClass(newClass)
       onClose()
     } catch (error) {
       console.error('Error adding class:', error)
@@ -92,10 +91,10 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
         <ModalBody>
           <form onSubmit={handleSubmit(handleAddClass)}>
             <Stack spacing={4}>
-              <Input type="date" placeholder="Date" />
-              <Select placeholder="Cheval">
+              <Input type="date" placeholder="Date" {...register('date')} />
+              <Select {...register('horse')} placeholder="Cheval">
                 {horses.map((horse) => (
-                  <option key={horse.id} value={horse.id}>
+                  <option key={horse.id} value={horse.name}>
                     {horse.name}
                   </option>
                 ))}
@@ -115,14 +114,13 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
                 ))}
               </Select>
             </Stack>
+            <ModalFooter>
+              <Button bg="#889696" color="white" mr={3} type="submit">
+                Ajouter le cours
+              </Button>
+            </ModalFooter>
           </form>
         </ModalBody>
-
-        <ModalFooter>
-          <Button bg="#889696" color="white" mr={3} type="submit">
-            Ajouter le cours
-          </Button>
-        </ModalFooter>
       </ModalContent>
     </Modal>
   )

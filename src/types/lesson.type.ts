@@ -8,6 +8,6 @@ export type Lesson = {
   day: Day
   coach: string
   discipline: Discipline
-  rating: number
+  rating?: number
   showMore?: string
 }

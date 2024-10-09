@@ -25,8 +25,8 @@ interface NewHorseModalProps {
 type FormValues = {
   name: string
   color: string
-  dob: Date
-  breed: string
+  dob?: Date
+  breed?: string
 }
 
 export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose }) => {
@@ -45,11 +45,10 @@ export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose }) => {
         rating: 0,
         breed: 'unknown'
       }
-      const createRound = await addHorse(newHorse)
-      console.log('🐼', createRound)
+      await addHorse(newHorse)
       onClose()
     } catch (error) {
-      console.error('Error adding round:', error)
+      console.error('🐴 Error adding horse:', error)
     }
   }
 
@@ -81,9 +80,7 @@ export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose }) => {
                 size="md"
               />
               <Input
-                {...register('dob', {
-                  required: true
-                })}
+                {...register('dob')}
                 type="date"
                 placeholder="Date de naissance"
                 errorBorderColor="red.300"

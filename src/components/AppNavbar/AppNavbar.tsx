@@ -7,6 +7,11 @@ import './appNavbar.scss'
 const AppNavbar: FC = () => {
   const navigate = useNavigate()
 
+  const signOut = () => {
+    console.log('Déconnexion')
+    navigate(RoutePath.SIGNIN)
+  }
+
   return (
     <div className="navbar">
       <Tabs variant="unstyled">
@@ -39,7 +44,7 @@ const AppNavbar: FC = () => {
           >
             Admin
           </Tab>
-          <Button bg="#e06c9f" color="white" onClick={() => navigate(RoutePath.SIGNIN)}>
+          <Button bg="#e06c9f" color="white" onClick={signOut}>
             Déconnexion
           </Button>
         </TabList>

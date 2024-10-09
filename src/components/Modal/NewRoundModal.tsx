@@ -57,8 +57,7 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
         result: data.result,
         season: data.season
       }
-      const createRound = await addRound(newRound)
-      console.log('🐼', createRound)
+      await addRound(newRound)
       onClose()
     } catch (error) {
       console.error('Error adding round:', error)
