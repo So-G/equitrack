@@ -1,5 +1,5 @@
 export type Round = {
-  id?: string
+  id: string
   date: string
   location: string
   horse: string
@@ -9,4 +9,5 @@ export type Round = {
   result: string
   season: string
   participants?: string
+  quarter?: string
 }

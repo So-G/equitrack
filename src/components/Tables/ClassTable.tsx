@@ -9,6 +9,7 @@ import {
 import { getShortDate } from 'helpers/date.helper'
 import { Lesson } from 'types/lesson.type'
 import styles from './table.module.scss'
+import { format } from 'date-fns'
 
 const columnHelper = createColumnHelper<Lesson>()
 
@@ -18,7 +19,7 @@ const columns = [
   }),
   columnHelper.accessor('day', {
     header: () => 'day',
-    cell: (info) => info.renderValue()
+    cell: (info) => format(new Date(info.row.original.date), 'EEEE')
   }),
   columnHelper.accessor('date', {
     cell: (info) => getShortDate(info.getValue())

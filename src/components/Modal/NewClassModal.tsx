@@ -12,12 +12,11 @@ import {
 } from '@chakra-ui/react'
 import { FC, useEffect, useState } from 'react'
 import { Discipline } from 'enums/discipline.enum'
-import { getHorses } from 'services/horses.service'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Lesson } from 'types/lesson.type'
 import { addClass } from 'services/classes.service'
 import { Day } from 'enums/day.enum'
-import { Horse } from 'types/horse.type'
+import { useHorses } from 'context/horse.context'
 
 type FormValues = {
   date: string
@@ -41,30 +40,8 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
     handleSubmit,
     formState: { errors }
   } = useForm<FormValues>()
-  const [horses, setHorses] = useState<Horse[]>([])
 
-  useEffect(() => {
-    const fetchHorses = async () => {
-      try {
-        const horsesData = await getHorses()
-
-        const mappedHorses: Horse[] = horsesData.map((horse: any) => ({
-          id: horse.id,
-          name: horse.name,
-          color: horse.color,
-          dob: horse.dob,
-          breed: horse.breed,
-          rating: horse.rating || 0 // Valeur par défaut pour rating
-        }))
-
-        setHorses(mappedHorses)
-      } catch (error) {
-        console.error('Erreur lors de la récupération des chevaux :', error)
-      }
-    }
-
-    fetchHorses() // Appeler la fonction
-  }, [])
+  const { horses } = useHorses()
 
   const handleAddClass: SubmitHandler<FormValues> = async (data) => {
     try {

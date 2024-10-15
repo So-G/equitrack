@@ -12,6 +12,7 @@ import Home2 from 'pages/Home/Home2'
 import { SignUp } from 'pages/SignUp/SignUp'
 import { SignIn } from 'pages/SignIn/SignIn' // Create a SignIn component if you don't have one
 import ProtectedRoute from 'routes/ProtectedRoute'
+import { HorseProvider } from 'context/horse.context'
 
 export const myRoutes = createBrowserRouter([
   {
@@ -42,11 +43,19 @@ export const myRoutes = createBrowserRouter([
             children: [
               {
                 path: RoutePath.CLASSES,
-                element: <Class />
+                element: (
+                  <HorseProvider>
+                    <Class />
+                  </HorseProvider>
+                )
               },
               {
                 path: RoutePath.COMPETITION,
-                element: <Competition />
+                element: (
+                  <HorseProvider>
+                    <Competition />
+                  </HorseProvider>
+                )
               },
               {
                 path: RoutePath.ADMIN,
@@ -55,11 +64,11 @@ export const myRoutes = createBrowserRouter([
               {
                 path: RoutePath.ADMIN_HORSES,
                 element: <HorsePage />
-              },
-              {
-                path: RoutePath.ADMIN_INSTRUCTORS,
-                element: <InstructorsView />
               }
+              // {
+              //   path: RoutePath.ADMIN_INSTRUCTORS,
+              //   element: <InstructorsView />
+              // }
             ]
           }
         ]

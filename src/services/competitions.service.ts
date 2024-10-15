@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Round } from 'types/round.type'
 
@@ -25,6 +25,16 @@ export async function addRound(round: Round) {
     return docRef.id
   } catch (error) {
     console.error('👻 Error adding round:', error)
+    throw error
+  }
+}
+
+export async function deleteRound(id: string) {
+  try {
+    await deleteDoc(doc(db, 'round', id))
+    console.log('🎉 Round deleted successfully')
+  } catch (error) {
+    console.error('👻 Error deleting round:', error)
     throw error
   }
 }

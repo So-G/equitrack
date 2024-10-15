@@ -11,7 +11,8 @@ import {
   Stack,
   InputGroup,
   InputRightElement,
-  IconButton
+  IconButton,
+  Select
 } from '@chakra-ui/react'
 import { FC, useState } from 'react'
 import DatePicker from 'react-datepicker'
@@ -19,6 +20,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import './newRoundModal.scss'
 import { addRound } from 'services/competitions.service'
 import { Round } from 'types/round.type'
+import { useHorses } from 'context/horse.context'
 
 type FormValues = {
   location: string
@@ -45,9 +47,12 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
 
   const [startDate, setStartDate] = useState(new Date())
 
+  const { horses } = useHorses()
+
   const handleAddRound: SubmitHandler<FormValues> = async (data) => {
     try {
       const newRound: Round = {
+        id: '',
         date: startDate.toISOString(),
         location: data.location,
         horse: data.horse,
@@ -83,16 +88,7 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
               />
               {errors.location && <span>Ce champ est requis</span>}
 
-              {/* <Input
-                {...register('date', {
-                  required: true
-                })}
-                background="#F5EFE6"
-                placeholder="Date"
-                errorBorderColor="red.300"
-                size="md"
-              /> */}
-              <DatePicker
+              {/* <DatePicker
                 calendarStartDay={1}
                 dateFormat={'dd/MM/yyyy'}
                 popperPlacement="top-end"
@@ -120,16 +116,37 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
                     </InputRightElement>
                   </InputGroup>
                 }
+              /> */}
+              <DatePicker
+                selected={startDate}
+                placeholderText="Date"
+                onChange={(date) => {
+                  if (date) {
+                    setStartDate(date)
+                  }
+                }}
+                customInput={
+                  <InputGroup>
+                    <Input background="#F5EFE6" />
+                    <InputRightElement>
+                      <IconButton
+                        bg="#5f7470"
+                        aria-label="Calendar"
+                        size="sm"
+                        icon={<CalendarIcon />}
+                      />
+                    </InputRightElement>
+                  </InputGroup>
+                }
               />
-              <Input
-                {...register('horse', {
-                  required: true
-                })}
-                background="#F5EFE6"
-                placeholder="Cheval"
-                errorBorderColor="red.300"
-                size="md"
-              />
+
+              <Select {...register('horse')} placeholder="Cheval" background="#F5EFE6">
+                {horses.map((horse) => (
+                  <option key={horse.id} value={horse.name}>
+                    {horse.name}
+                  </option>
+                ))}
+              </Select>
               <Input
                 {...register('category', {
                   required: true

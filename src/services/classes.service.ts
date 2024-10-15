@@ -1,11 +1,17 @@
-import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { collection, addDoc, query, getDocs, orderBy } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Lesson } from 'types/lesson.type'
 
 export async function getClasses() {
   try {
-    const querySnapshot = await getDocs(collection(db, 'class'))
-    const classes = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+    const classesQuery = query(collection(db, 'class'), orderBy('date', 'asc'))
+
+    const querySnapshot = await getDocs(classesQuery)
+    const classes = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    console.log('🎉 Success')
     return classes
   } catch (error) {
     console.error('Error fetching classes:', error)

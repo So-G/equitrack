@@ -21,7 +21,9 @@ export const Competition = () => {
       points: round.points,
       category: round.category || '',
       result: round.result || '',
-      season: round.season || ''
+      season: round.season || '',
+      participants: round.participants || '',
+      quarter: round.quarter
     }))
   }
 

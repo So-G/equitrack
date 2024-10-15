@@ -18,7 +18,7 @@ const Admin: FC<PropsWithChildren> = ({ children }) => {
       >
         Voir tous les chevaux
       </Button>
-      <Button
+      {/* <Button
         bg="#e06c9f"
         color="white"
         onClick={() => {
@@ -26,7 +26,7 @@ const Admin: FC<PropsWithChildren> = ({ children }) => {
         }}
       >
         Voir tous les instructeurs
-      </Button>
+      </Button> */}
       {children}
       <Outlet />
     </div>
