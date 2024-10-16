@@ -35,11 +35,7 @@ interface NewClassModalProps {
 const Coaches = ['Aubéry', 'Pierre', 'Alix']
 
 const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormValues>()
+  const { register, handleSubmit } = useForm<FormValues>()
 
   const { horses } = useHorses()
 
