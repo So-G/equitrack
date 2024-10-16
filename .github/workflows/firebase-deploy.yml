@@ -10,19 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository 📓
         uses: actions/checkout@v3
 
-      - name: Setup Node.js environment
+      - name: Setup Node.js environment ⚛️
         uses: actions/setup-node@v3 #
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      - name: Install dependencies 📥
         run: yarn install
 
-      - name: Build project
-        run: yarn build # Compile le projet
+      - name: Build project 🔨
+        run: yarn build
 
-      - name: Deploy to Firebase Hosting
+      - name: Deploy to Firebase Hosting 🔥
         run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
