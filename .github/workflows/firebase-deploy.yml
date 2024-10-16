@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3 #
         with:
           node-version: '18'
 
@@ -22,7 +22,7 @@ jobs:
         run: yarn install
 
       - name: Build project
-        run: yarn build
+        run: yarn build # Compile le projet
 
       - name: Deploy to Firebase Hosting
         run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
