@@ -11,9 +11,9 @@ export const SignIn = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password)
+      await signInWithEmailAndPassword(auth, data.email, data.password)
       navigate('/')
-      console.log('✨ Utilisateur connecté:', userCredential)
+      console.log('✨ Utilisateur connecté ✨')
     } catch (error: any) {
       console.log(error.message)
     }

@@ -11,11 +11,7 @@ interface FormValues {
 }
 
 export const SignUp = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormValues>()
+  const { register, handleSubmit } = useForm<FormValues>()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,8 +19,7 @@ export const SignUp = () => {
 
   const handleSignUp: SubmitHandler<FormValues> = async (data) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password)
-      console.log('Utilisateur créé:', userCredential)
+      await createUserWithEmailAndPassword(auth, data.email, data.password)
     } catch (error: any) {
       setError(error.message)
       console.error('Erreur lors de la création de l’utilisateur:', error)

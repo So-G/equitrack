@@ -4,7 +4,7 @@ const Home: FC = () => {
   return (
     <div className="horse-animation">
       <div className="horse">
-        <p>couocusa</p>
+        <p>test</p>
       </div>
     </div>
   )

@@ -33,7 +33,6 @@ export const Competition = () => {
         const data = await getCompetitions()
         const mappedData = transformToRounds(data)
         setCompetitions(mappedData)
-        console.log('Competitions:', mappedData)
       } catch (error) {
         console.error('Error fetching competitions:', error)
       }

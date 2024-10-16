@@ -26,7 +26,6 @@ export const HorsePage = () => {
       try {
         const data = await getHorses()
         const mappedData = horsesMapper(data)
-        console.log('🏇🏻:', data)
         setHorses(mappedData)
       } catch (error) {
         console.error('Error fetching competitions:', error)
