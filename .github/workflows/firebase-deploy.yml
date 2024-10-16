@@ -22,7 +22,10 @@ jobs:
         run: yarn install
 
       - name: Build project 🔨
-        run: npm run build
+        env:
+          REACT_APP_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          REACT_APP_FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+        run: yarn build
 
       - name: Install Firebase CLI
         run: yarn global add firebase-tools
