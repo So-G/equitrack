@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies 📥
         run: yarn install
 
+      - name: Log Firebase API Key
+        run: echo "Firebase API Key ⚡️ ${{ secrets.FIREBASE_API_KEY }}"
+
       - name: Build project 🔨
         env:
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
