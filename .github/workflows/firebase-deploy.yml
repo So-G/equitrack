@@ -22,7 +22,7 @@ jobs:
         run: yarn install
 
       - name: Log Firebase API Key
-        run: echo "Firebase API Key ⚡️ ${{ secrets.FIREBASE_API_KEY }}"
+        run: echo "Firebase API Key ⚡️ ${{ secrets.FIREBASE_API_KEY }} 🐞"
 
       - name: Build project 🔨
         env:
