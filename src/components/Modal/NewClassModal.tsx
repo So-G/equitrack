@@ -10,7 +10,7 @@ import {
   Select,
   Stack
 } from '@chakra-ui/react'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Discipline } from 'enums/discipline.enum'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Lesson } from 'types/lesson.type'

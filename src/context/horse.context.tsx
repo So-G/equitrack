@@ -1,4 +1,4 @@
-import React, { createContext, FC, ReactNode, useContext, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { getHorses } from 'services/horses.service'
 import { Horse } from 'types/horse.type'
 
