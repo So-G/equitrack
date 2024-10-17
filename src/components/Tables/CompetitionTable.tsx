@@ -9,18 +9,25 @@ import styles from './table.module.scss'
 import { Round } from 'types/round.type'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { deleteRound } from 'services/competitions.service'
+import { Dispatch, SetStateAction } from 'react'
 
 const columnHelper = createColumnHelper<Round>()
 
-export const CompetitionTable = ({ data }: { data: Round[] }) => {
+export const CompetitionTable = ({
+  data,
+  setData
+}: {
+  data: Round[]
+  setData: Dispatch<SetStateAction<Round[]>>
+}) => {
   const handleEdit = (round: Round) => {
     console.log('Edit:', round)
   }
 
-  // Fonction pour supprimer une ligne
   const handleDelete = async (round: Round) => {
     console.log('Delete:', round)
-    await deleteRound(round.id)
+    await deleteRound(round)
+    setData((prev) => prev.filter((item) => item.id !== round.id))
   }
 
   const columns = [

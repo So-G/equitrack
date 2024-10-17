@@ -1,4 +1,3 @@
-import { CalendarIcon } from '@chakra-ui/icons'
 import {
   Modal,
   ModalOverlay,
@@ -9,13 +8,9 @@ import {
   Button,
   Input,
   Stack,
-  InputGroup,
-  InputRightElement,
-  IconButton,
   Select
 } from '@chakra-ui/react'
-import { FC, useState } from 'react'
-import DatePicker from 'react-datepicker'
+import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import './newRoundModal.scss'
 import { addRound } from 'services/competitions.service'
@@ -45,15 +40,12 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
     formState: { errors }
   } = useForm<FormValues>()
 
-  const [startDate, setStartDate] = useState(new Date())
-
   const { horses } = useHorses()
 
   const handleAddRound: SubmitHandler<FormValues> = async (data) => {
     try {
       const newRound: Round = {
-        id: '',
-        date: startDate.toISOString(),
+        date: data.date,
         location: data.location,
         horse: data.horse,
         category: data.category,
@@ -63,6 +55,7 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
         season: data.season
       }
       await addRound(newRound)
+
       onClose()
     } catch (error) {
       console.error('Error adding round:', error)
@@ -87,58 +80,7 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
                 size="md"
               />
               {errors.location && <span>Ce champ est requis</span>}
-
-              {/* <DatePicker
-                calendarStartDay={1}
-                dateFormat={'dd/MM/yyyy'}
-                popperPlacement="top-end"
-                placeholderText="Date"
-                selected={startDate}
-                onChange={(date) => {
-                  if (date) {
-                    setStartDate(date)
-                  }
-                }}
-                showPopperArrow={false}
-                customInput={
-                  <InputGroup>
-                    <Input
-                      background="#F5EFE6"
-                      // style={{}} // Override DatePicker styles
-                    />
-                    <InputRightElement>
-                      <IconButton
-                        bg="#5f7470"
-                        aria-label="Calendar"
-                        size="sm"
-                        icon={<CalendarIcon />}
-                      />
-                    </InputRightElement>
-                  </InputGroup>
-                }
-              /> */}
-              <DatePicker
-                selected={startDate}
-                placeholderText="Date"
-                onChange={(date) => {
-                  if (date) {
-                    setStartDate(date)
-                  }
-                }}
-                customInput={
-                  <InputGroup>
-                    <Input background="#F5EFE6" />
-                    <InputRightElement>
-                      <IconButton
-                        bg="#5f7470"
-                        aria-label="Calendar"
-                        size="sm"
-                        icon={<CalendarIcon />}
-                      />
-                    </InputRightElement>
-                  </InputGroup>
-                }
-              />
+              <Input type="date" placeholder="Date" {...register('date')} />
 
               <Select {...register('horse')} placeholder="Cheval" background="#F5EFE6">
                 {horses.map((horse) => (

@@ -56,7 +56,7 @@ export const Competition = () => {
         >
           Ajouter une compétition
         </Button>
-        <CompetitionTable data={competitions} />
+        <CompetitionTable data={competitions} setData={setCompetitions} />
         <p className={styles.total}>Total Points : {totalPoints} </p>{' '}
         <NewRoundModal isOpen={isModalOpen} onClose={closeModal} />
       </div>

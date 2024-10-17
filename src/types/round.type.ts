@@ -1,5 +1,5 @@
 export type Round = {
-  id: string
+  id?: string
   date: string
   location: string
   horse: string

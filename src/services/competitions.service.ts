@@ -1,10 +1,11 @@
-import { collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import { collection, getDocs, addDoc, deleteDoc, doc, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Round } from 'types/round.type'
 
 export async function getCompetitions() {
   try {
-    const querySnapshot = await getDocs(collection(db, 'round'))
+    const competitionsQuery = query(collection(db, 'round'), orderBy('date', 'asc'))
+    const querySnapshot = await getDocs(competitionsQuery)
     const competitions = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
     return competitions
   } catch (error) {
@@ -29,9 +30,14 @@ export async function addRound(round: Round) {
   }
 }
 
-export async function deleteRound(id: string) {
+export async function deleteRound(round: Round) {
+  if (!round.id) {
+    console.error("L'ID du round est manquant. Impossible de le supprimer.")
+    return
+  }
+
   try {
-    await deleteDoc(doc(db, 'round', id))
+    await deleteDoc(doc(db, 'round', round.id))
     console.log('🎉 Round deleted successfully')
   } catch (error) {
     console.error('👻 Error deleting round:', error)
