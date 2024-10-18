@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react'
 import styles from './horse.module.scss'
 import { useEffect, useState } from 'react'
-import { getHorses } from 'services/horses.service'
+import { addHorse, getHorses } from 'services/horses.service'
 import { HorseTable } from 'components/Tables/HorseTable'
 import { Horse } from 'types/horse.type'
 import { NewHorseModal } from 'components/Modal/NewHorseModal'
@@ -17,23 +17,27 @@ export const HorsePage = () => {
       color: horse.color,
       breed: horse.breed,
       dob: horse.dob,
-      rating: horse.rating || 0
+      rating: horse.rating
     }))
   }
 
-  useEffect(() => {
-    const fetchHorses = async () => {
-      try {
-        const data = await getHorses()
-        const mappedData = horsesMapper(data)
-        setHorses(mappedData)
-      } catch (error) {
-        console.error('Error fetching competitions:', error)
-      }
-    }
+  const fetchHorses = async () => {
+    const fetchedHorses = await getHorses() // Remplace par ta fonction pour récupérer les chevaux
+    setHorses(horsesMapper(fetchedHorses))
+  }
 
+  useEffect(() => {
     fetchHorses()
   }, [])
+
+  const handleAddHorse = async (newHorse: Horse) => {
+    try {
+      await addHorse(newHorse)
+      setHorses((prevHorses) => [...prevHorses, newHorse])
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du cheval:", error)
+    }
+  }
 
   const closeModal = () => setIsModalOpen(false)
 
@@ -44,7 +48,7 @@ export const HorsePage = () => {
         Ajouter un 🦄✨
       </Button>
       <HorseTable data={horses} setData={setHorses} />
-      <NewHorseModal isOpen={isModalOpen} onClose={closeModal} />
+      <NewHorseModal isOpen={isModalOpen} onClose={closeModal} onAddHorse={handleAddHorse} />
     </div>
   )
 }

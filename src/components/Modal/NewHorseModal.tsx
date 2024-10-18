@@ -14,11 +14,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import styles from './newHorseModal.module.scss'
 import { FC } from 'react'
 import { Horse } from 'types/horse.type'
-import { addHorse } from 'services/horses.service'
 
 interface NewHorseModalProps {
   isOpen: boolean
   onClose: () => void
+  onAddHorse: (horse: Horse) => void
 }
 
 type FormValues = {
@@ -26,9 +26,10 @@ type FormValues = {
   color: string
   dob?: string
   breed?: string
+  rating?: number
 }
 
-export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose }) => {
+export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose, onAddHorse }) => {
   const {
     register,
     handleSubmit,
@@ -41,10 +42,10 @@ export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose }) => {
         name: data.name,
         color: data.color,
         dob: data.dob,
-        rating: undefined,
-        breed: data.breed
+        breed: data.breed,
+        ...(data.rating !== undefined && { rating: data.rating })
       }
-      await addHorse(newHorse)
+      await onAddHorse(newHorse)
       onClose()
     } catch (error) {
       console.error('🐴 Error adding horse:', error)

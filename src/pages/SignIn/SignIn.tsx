@@ -25,7 +25,14 @@ export const SignIn = () => {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <Input {...register('email')} placeholder="Identifiant" id={styles.email} />
         <Input {...register('password')} placeholder="Mot de passe" type="password" id="password" />
-        <Button bg="#F5E5D1" type="submit">
+        <Button
+          bg="#F5E5D1"
+          _hover={{
+            background: 'black',
+            color: '#F5E5D1'
+          }}
+          type="submit"
+        >
           Connexion
         </Button>
       </form>

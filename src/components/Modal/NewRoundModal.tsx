@@ -17,6 +17,12 @@ import { addRound } from 'services/competitions.service'
 import { Round } from 'types/round.type'
 import { useHorses } from 'context/horse.context'
 
+interface NewRoundModalProps {
+  isOpen: boolean
+  onClose: () => void
+  setCompetitions: (value: React.SetStateAction<Round[]>) => void
+}
+
 type FormValues = {
   location: string
   date: string
@@ -26,12 +32,6 @@ type FormValues = {
   ranking: string
   result: string
   season: string
-}
-
-interface NewRoundModalProps {
-  isOpen: boolean
-  onClose: () => void
-  setCompetitions: (value: React.SetStateAction<Round[]>) => void
 }
 
 const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose, setCompetitions }) => {

@@ -34,14 +34,13 @@ export const Lessons = () => {
         console.error('Error fetching lessons:', error)
       }
     }
-
     fetchClasses()
   }, [])
 
   const closeModal = () => setIsModalOpen(false)
 
   return (
-    <div className={styles.classPage}>
+    <div className={styles.lessonPage}>
       <div className={styles.content}>
         <Button
           bg="black"

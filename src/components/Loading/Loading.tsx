@@ -1,15 +1,11 @@
-import React, { HTMLAttributes } from 'react'
-import styles from './loading.module.scss'
-import classNames from 'classnames'
+import React, { FC } from 'react'
+import Lottie from 'lottie-react'
+import horseAnimationData from '../../assets/horse-animation.json'
 
-export interface LoadingProps extends HTMLAttributes<HTMLDivElement> {
-  fullWidth?: boolean
-}
-
-const Loading = ({ className }: LoadingProps) => {
+const Loading: FC = () => {
   return (
-    <div className={classNames(className, styles.container)}>
-      <h1>Chargement...</h1>
+    <div className="horse-lottie-animation">
+      <Lottie animationData={horseAnimationData} loop={true} />
     </div>
   )
 }

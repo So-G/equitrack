@@ -44,7 +44,7 @@ export const HorseTable = ({
   return (
     <div>
       <TableContainer>
-        <Table>
+        <Table border="1px" borderColor="gray.200">
           <Thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <Tr key={headerGroup.id}>

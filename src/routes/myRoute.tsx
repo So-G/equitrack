@@ -6,11 +6,11 @@ import Layout from 'components/Layout/Layout'
 import { Competition } from 'pages/Competitions/Competition'
 import { HorsePage } from 'pages/Horse/Horse'
 import { Lessons } from 'pages/Lesson/Lessons'
-import Home2 from 'pages/Home/Home2'
 import { SignUp } from 'pages/SignUp/SignUp'
 import { SignIn } from 'pages/SignIn/SignIn' // Create a SignIn component if you don't have one
 import ProtectedRoute from 'routes/ProtectedRoute'
 import { HorseProvider } from 'context/horse.context'
+import Home from 'pages/Home/Home'
 
 export const myRoutes = createBrowserRouter([
   {
@@ -34,10 +34,10 @@ export const myRoutes = createBrowserRouter([
           },
           {
             path: RoutePath.HOME,
-            element: <Home2 />
+            element: <Home />
           },
           {
-            element: <ProtectedRoute />, // All routes under this require authentication
+            element: <ProtectedRoute />,
             children: [
               {
                 path: RoutePath.CLASSES,

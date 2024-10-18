@@ -7,22 +7,21 @@
   align-items: center;
   height: 100vh;
   background-color: colors.$charcoal-blue;
-}
 
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30vw;
-}
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30vw;
 
-#email,
-password {
-  margin-bottom: 1rem;
-}
+    input {
+      background-color: colors.$lighter-charcoal !important;
+      font-weight: 700;
+    }
+  }
 
-input {
-  background-color: colors.$lighter-charcoal !important;
-  color: colors.$light-cream;
-  font-weight: 700;
+  #email,
+  password {
+    margin-bottom: 1rem;
+  }
 }

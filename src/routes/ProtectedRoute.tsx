@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase'
+import Loading from 'components/Loading/Loading'
+
 const ProtectedRoute = () => {
   const [isAuth, setIsAuth] = useState<boolean | null>(null)
 
@@ -14,8 +16,7 @@ const ProtectedRoute = () => {
   }, [])
 
   if (isAuth === null) {
-    // Optionally show a loading spinner while checking auth
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   return isAuth ? <Outlet /> : <Navigate to="/signin" replace />
