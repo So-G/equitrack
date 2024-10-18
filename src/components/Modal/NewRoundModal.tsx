@@ -31,9 +31,10 @@ type FormValues = {
 interface NewRoundModalProps {
   isOpen: boolean
   onClose: () => void
+  setCompetitions: (value: React.SetStateAction<Round[]>) => void
 }
 
-const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
+const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose, setCompetitions }) => {
   const {
     register,
     handleSubmit,
@@ -50,11 +51,12 @@ const NewRoundModal: FC<NewRoundModalProps> = ({ isOpen, onClose }) => {
         horse: data.horse,
         category: data.category,
         points: data.points,
-        ranking: data.ranking,
+        ranking: data.ranking || '-',
         result: data.result,
         season: data.season
       }
       await addRound(newRound)
+      setCompetitions((prevRounds) => [...prevRounds, newRound])
 
       onClose()
     } catch (error) {

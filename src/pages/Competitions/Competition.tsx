@@ -58,7 +58,11 @@ export const Competition = () => {
         </Button>
         <CompetitionTable data={competitions} setData={setCompetitions} />
         <p className={styles.total}>Total Points : {totalPoints} </p>{' '}
-        <NewRoundModal isOpen={isModalOpen} onClose={closeModal} />
+        <NewRoundModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          setCompetitions={setCompetitions}
+        />
       </div>
     </div>
   )

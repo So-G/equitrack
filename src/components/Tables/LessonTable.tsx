@@ -1,61 +1,59 @@
-import { TableContainer, Table, Thead, Tr, Th, Tbody, Td, IconButton } from '@chakra-ui/react'
+import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, IconButton } from '@chakra-ui/react'
+
 import {
-  useReactTable,
-  getCoreRowModel,
+  createColumnHelper,
   flexRender,
-  createColumnHelper
+  getCoreRowModel,
+  useReactTable
 } from '@tanstack/react-table'
+import { getShortDate } from 'helpers/date.helper'
+import { Lesson } from 'types/lesson.type'
 import styles from './table.module.scss'
-import { Round } from 'types/round.type'
+import { format } from 'date-fns'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
-import { deleteRound } from 'services/competitions.service'
+import { deleteLesson } from 'services/lessons.service'
 import { Dispatch, SetStateAction } from 'react'
+const columnHelper = createColumnHelper<Lesson>()
 
-const columnHelper = createColumnHelper<Round>()
-
-export const CompetitionTable = ({
+export const LessonTable = ({
   data,
   setData
 }: {
-  data: Round[]
-  setData: Dispatch<SetStateAction<Round[]>>
+  data: Lesson[]
+  setData: Dispatch<SetStateAction<Lesson[]>>
 }) => {
-  const handleEdit = async (round: Round) => {
-    console.log('Edit:', round)
+  const handleEdit = async (lesson: Lesson) => {
+    console.log('Edit:', lesson)
   }
 
-  const handleDelete = async (round: Round) => {
-    console.log('Delete:', round)
-    await deleteRound(round)
-    setData((prev) => prev.filter((item) => item.id !== round.id))
+  const handleDelete = async (lesson: Lesson) => {
+    console.log('Delete:', lesson)
+    await deleteLesson(lesson)
+    setData((prev) => prev.filter((item) => item.id !== lesson.id))
   }
 
   const columns = [
-    columnHelper.accessor('location', {
+    columnHelper.accessor('horse', {
       cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('day', {
+      header: () => 'day',
+      cell: (info) => format(new Date(info.row.original.date), 'EEEE')
     }),
     columnHelper.accessor('date', {
+      cell: (info) => getShortDate(info.getValue())
+    }),
+    columnHelper.accessor('coach', {
       cell: (info) => info.renderValue()
     }),
-    columnHelper.accessor('category', {
-      header: () => 'Epreuve',
+    columnHelper.accessor('discipline', {
+      header: 'Discipline',
       cell: (info) => info.renderValue()
     }),
-    columnHelper.accessor('horse', {
-      header: 'Cheval',
-      cell: (info) => info.getValue()
+    columnHelper.accessor('rating', {
+      header: 'Rating',
+      cell: (info) => info.renderValue()
     }),
-    columnHelper.accessor('ranking', {
-      header: 'Classement',
-      cell: (info) => <p>{`${info.getValue()} / ${info.row.original.participants}`}</p>
-    }),
-    columnHelper.accessor('points', {
-      header: 'Points championnat'
-    }),
-    columnHelper.accessor('quarter', {
-      header: 'Quart'
-    }),
-
     columnHelper.display({
       header: 'Actions',
       cell: (info) => (
@@ -91,7 +89,7 @@ export const CompetitionTable = ({
   return (
     <div className={styles.tablePage}>
       <TableContainer className={styles.table}>
-        <Table variant="striped" colorScheme="pink">
+        <Table>
           <Thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <Tr key={headerGroup.id}>

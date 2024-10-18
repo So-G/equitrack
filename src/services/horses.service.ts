@@ -26,3 +26,12 @@ export async function addHorse(horse: Horse) {
     throw error
   }
 }
+
+export async function updateHorse(horse: Horse) {
+  try {
+    await console.log('🏇🏻 Horse updated successfully with ID: ', horse.id)
+  } catch (error) {
+    console.error('👻 Error updating horse:', error)
+    throw error
+  }
+}

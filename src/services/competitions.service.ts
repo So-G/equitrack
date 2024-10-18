@@ -44,3 +44,16 @@ export async function deleteRound(round: Round) {
     throw error
   }
 }
+
+export async function updateRound(round: Round) {
+  try {
+    await addDoc(collection(db, 'round'), {
+      ...round
+    })
+
+    console.log('Round updated successfully with ID: ', round.id)
+  } catch (error) {
+    console.error('👻 Error updating round:', error)
+    throw error
+  }
+}

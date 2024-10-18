@@ -6,7 +6,7 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
-import { convertTimestampToDate } from 'helpers/date.helper'
+import { Dispatch, SetStateAction } from 'react'
 import { Horse } from 'types/horse.type'
 
 const columnHelper = createColumnHelper<Horse>()
@@ -19,7 +19,7 @@ const columns = [
   }),
   columnHelper.accessor('dob', {
     header: 'Date de naissance',
-    cell: (info) => convertTimestampToDate(info.getValue())
+    cell: (info) => info.renderValue()
   }),
 
   columnHelper.accessor('rating', {
@@ -27,7 +27,13 @@ const columns = [
   })
 ]
 
-export const HorseTable = ({ data }: { data: Horse[] }) => {
+export const HorseTable = ({
+  data,
+  setData
+}: {
+  data: Horse[]
+  setData: Dispatch<SetStateAction<Horse[]>>
+}) => {
   const table = useReactTable({
     data,
     columns,

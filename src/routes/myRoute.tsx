@@ -5,7 +5,7 @@ import Admin from 'components/Admin/Admin'
 import Layout from 'components/Layout/Layout'
 import { Competition } from 'pages/Competitions/Competition'
 import { HorsePage } from 'pages/Horse/Horse'
-import { Class } from 'pages/Class/Class'
+import { Lessons } from 'pages/Lesson/Lessons'
 import Home2 from 'pages/Home/Home2'
 import { SignUp } from 'pages/SignUp/SignUp'
 import { SignIn } from 'pages/SignIn/SignIn' // Create a SignIn component if you don't have one
@@ -43,7 +43,7 @@ export const myRoutes = createBrowserRouter([
                 path: RoutePath.CLASSES,
                 element: (
                   <HorseProvider>
-                    <Class />
+                    <Lessons />
                   </HorseProvider>
                 )
               },

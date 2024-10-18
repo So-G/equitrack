@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/react'
 import styles from './horse.module.scss'
 import { useEffect, useState } from 'react'
 import { getHorses } from 'services/horses.service'
-import { HorseTable } from 'components/Horses/HorseTable'
+import { HorseTable } from 'components/Tables/HorseTable'
 import { Horse } from 'types/horse.type'
 import { NewHorseModal } from 'components/Modal/NewHorseModal'
 
@@ -43,7 +43,7 @@ export const HorsePage = () => {
       <Button bg="#e06c9f" color="white" onClick={() => setIsModalOpen(true)}>
         Ajouter un 🦄✨
       </Button>
-      <HorseTable data={horses} />
+      <HorseTable data={horses} setData={setHorses} />
       <NewHorseModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   )

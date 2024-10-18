@@ -14,7 +14,7 @@ import { FC } from 'react'
 import { Discipline } from 'enums/discipline.enum'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Lesson } from 'types/lesson.type'
-import { addClass } from 'services/classes.service'
+import { addLesson } from 'services/lessons.service'
 import { Day } from 'enums/day.enum'
 import { useHorses } from 'context/horse.context'
 
@@ -27,21 +27,21 @@ type FormValues = {
   coach: string
   rating: number
 }
-interface NewClassModalProps {
+interface NewLessonModalProps {
   isOpen: boolean
   onClose: () => void
 }
 
 const Coaches = ['Aubéry', 'Pierre', 'Alix']
 
-const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
+const NewLessonModal: FC<NewLessonModalProps> = ({ isOpen, onClose }) => {
   const { register, handleSubmit } = useForm<FormValues>()
 
   const { horses } = useHorses()
 
-  const handleAddClass: SubmitHandler<FormValues> = async (data) => {
+  const handleAddLesson: SubmitHandler<FormValues> = async (data) => {
     try {
-      const newClass: Lesson = {
+      const newLesson: Lesson = {
         date: data.date,
         day: data.day,
         discipline: data.discipline,
@@ -49,7 +49,7 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
         coach: data.coach,
         rating: data.rating || 0
       }
-      await addClass(newClass)
+      await addLesson(newLesson)
       onClose()
     } catch (error) {
       console.error('Error adding class:', error)
@@ -62,7 +62,7 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
       <ModalContent>
         <ModalHeader>Modal Title</ModalHeader>
         <ModalBody>
-          <form onSubmit={handleSubmit(handleAddClass)}>
+          <form onSubmit={handleSubmit(handleAddLesson)}>
             <Stack spacing={4}>
               <Input type="date" placeholder="Date" {...register('date')} />
               <Select {...register('horse')} placeholder="Cheval">
@@ -99,4 +99,4 @@ const NewClassModal: FC<NewClassModalProps> = ({ isOpen, onClose }) => {
   )
 }
 
-export default NewClassModal
+export default NewLessonModal

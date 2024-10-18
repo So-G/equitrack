@@ -1,13 +1,13 @@
-import { ClassTable } from 'components/Tables/ClassTable'
-import styles from './class.module.scss'
+import styles from './lesson.module.scss'
 import { Button } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
-import NewClassModal from 'components/Modal/NewClassModal'
 import { useEffect, useState } from 'react'
 import { Lesson } from 'types/lesson.type'
-import { getClasses } from 'services/classes.service'
+import { getLessons } from 'services/lessons.service'
+import NewLessonModal from 'components/Modal/NewLessonModal'
+import { LessonTable } from 'components/Tables/LessonTable'
 
-export const Class = () => {
+export const Lessons = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [lessons, setLessons] = useState<Lesson[]>([])
 
@@ -27,7 +27,7 @@ export const Class = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const data = await getClasses()
+        const data = await getLessons()
         const mappedData = lessonsMapper(data)
         setLessons(mappedData)
       } catch (error) {
@@ -52,9 +52,9 @@ export const Class = () => {
           Ajouter un cours
         </Button>
         <h1>2024-2025</h1>
-        <ClassTable data={lessons} />
+        <LessonTable data={lessons} setData={setLessons} />
       </div>
-      <NewClassModal isOpen={isModalOpen} onClose={closeModal} />
+      <NewLessonModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   )
 }

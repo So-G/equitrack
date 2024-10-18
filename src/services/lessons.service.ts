@@ -1,8 +1,8 @@
-import { collection, addDoc, query, getDocs, orderBy } from 'firebase/firestore'
+import { collection, addDoc, query, getDocs, orderBy, deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase'
 import { Lesson } from 'types/lesson.type'
 
-export async function getClasses() {
+export async function getLessons() {
   try {
     const classesQuery = query(collection(db, 'class'), orderBy('date', 'asc'))
 
@@ -19,17 +19,30 @@ export async function getClasses() {
   }
 }
 
-export async function addClass(lesson: Lesson) {
+export async function addLesson(lesson: Lesson) {
   try {
     const docRef = await addDoc(collection(db, 'class'), {
-      ...lesson,
-      day: 'Lundi'
+      ...lesson
     })
 
     console.log('🎉 Class added successfully with ID: ', docRef.id)
     return docRef.id
   } catch (error) {
     console.error('👻 Error adding class:', error)
+    throw error
+  }
+}
+
+export async function deleteLesson(lesson: Lesson) {
+  if (!lesson.id) {
+    console.error("L'ID de la classe est manquant. Impossible de la supprimer.")
+    return
+  }
+  try {
+    await deleteDoc(doc(db, 'class', lesson.id))
+    console.log('🎉 Class deleted successfully')
+  } catch (error) {
+    console.error('👻 Error deleting class:', error)
     throw error
   }
 }

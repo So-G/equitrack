@@ -3,7 +3,7 @@ const Home: FC = () => {
   return (
     <div className="horse-animation">
       <div className="horse">
-        <p>test</p>
+        <p>Bienvenue</p>
       </div>
     </div>
   )

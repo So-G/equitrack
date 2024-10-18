@@ -15,7 +15,6 @@ import styles from './newHorseModal.module.scss'
 import { FC } from 'react'
 import { Horse } from 'types/horse.type'
 import { addHorse } from 'services/horses.service'
-import { Timestamp } from 'firebase/firestore'
 
 interface NewHorseModalProps {
   isOpen: boolean
@@ -25,7 +24,7 @@ interface NewHorseModalProps {
 type FormValues = {
   name: string
   color: string
-  dob?: Date
+  dob?: string
   breed?: string
 }
 
@@ -41,9 +40,9 @@ export const NewHorseModal: FC<NewHorseModalProps> = ({ isOpen, onClose }) => {
       const newHorse: Horse = {
         name: data.name,
         color: data.color,
-        dob: data.dob as unknown as Timestamp,
-        rating: 0,
-        breed: 'unknown'
+        dob: data.dob,
+        rating: undefined,
+        breed: data.breed
       }
       await addHorse(newHorse)
       onClose()

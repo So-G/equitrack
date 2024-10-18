@@ -1,10 +1,8 @@
-import { Timestamp } from 'firebase/firestore'
-
 export type Horse = {
   id?: string
   name: string
   color: string
-  dob?: Timestamp
+  dob?: string
   rating?: number
   breed?: string
 }
