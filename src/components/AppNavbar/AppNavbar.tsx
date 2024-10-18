@@ -14,28 +14,28 @@ const AppNavbar: FC = () => {
         <TabList>
           <Tab
             className="menu-tabs"
-            _selected={{ color: '#ffdbda', bg: '#e06c9f' }}
+            _selected={{ color: '#f5e5d1', bg: '#e06c9f' }}
             onClick={() => navigate(RoutePath.HOME)}
           >
             Home
           </Tab>
           <Tab
             className="menu-tabs"
-            _selected={{ color: '#ffdbda', bg: '#e06c9f' }}
+            _selected={{ color: '#f5e5d1', bg: '#e06c9f' }}
             onClick={() => navigate(RoutePath.CLASSES)}
           >
             Cours
           </Tab>
           <Tab
             className="menu-tabs"
-            _selected={{ color: '#ffdbda', bg: '#e06c9f' }}
+            _selected={{ color: '#f5e5d1', bg: '#e06c9f' }}
             onClick={() => navigate(RoutePath.COMPETITION)}
           >
             Concours
           </Tab>
           <Tab
             className="menu-tabs"
-            _selected={{ color: '#ffdbda', bg: '#e06c9f' }}
+            _selected={{ color: '#f5e5d1', bg: '#e06c9f' }}
             onClick={() => navigate(RoutePath.ADMIN)}
           >
             Admin

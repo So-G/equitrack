@@ -6,6 +6,7 @@ import {
   getCoreRowModel,
   useReactTable
 } from '@tanstack/react-table'
+import { getShortDate } from 'helpers/date.helper'
 import { Dispatch, SetStateAction } from 'react'
 import { Horse } from 'types/horse.type'
 
@@ -19,7 +20,7 @@ const columns = [
   }),
   columnHelper.accessor('dob', {
     header: 'Date de naissance',
-    cell: (info) => info.renderValue()
+    cell: (info) => getShortDate(info.getValue() ?? '01/01/2000')
   }),
 
   columnHelper.accessor('rating', {

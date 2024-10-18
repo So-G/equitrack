@@ -1,4 +1,7 @@
+@use '../../styles/base/colors';
+
 .menu-tabs {
   font-size: 1.5rem !important;
-  font-family: 'Roboto', sans-serif !important;
+  font-family: 'Dosis', sans-serif !important;
+  color: colors.$charcoal-blue !important;
 }

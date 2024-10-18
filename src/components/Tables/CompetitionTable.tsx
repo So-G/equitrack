@@ -10,6 +10,7 @@ import { Round } from 'types/round.type'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { deleteRound } from 'services/competitions.service'
 import { Dispatch, SetStateAction } from 'react'
+import { getShortDate } from 'helpers/date.helper'
 
 const columnHelper = createColumnHelper<Round>()
 
@@ -35,7 +36,7 @@ export const CompetitionTable = ({
       cell: (info) => info.getValue()
     }),
     columnHelper.accessor('date', {
-      cell: (info) => info.renderValue()
+      cell: (info) => getShortDate(info.getValue())
     }),
     columnHelper.accessor('category', {
       header: () => 'Epreuve',

@@ -13,11 +13,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 50vw;
+  width: 30vw;
 }
 
 #email,
 password {
   margin-bottom: 1rem;
-  padding: 0.5rem;
+}
+
+input {
+  background-color: colors.$lighter-charcoal !important;
+  color: colors.$light-cream;
+  font-weight: 700;
 }
