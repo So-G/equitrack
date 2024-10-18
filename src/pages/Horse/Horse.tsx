@@ -28,6 +28,7 @@ export const HorsePage = () => {
 
   useEffect(() => {
     fetchHorses()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleAddHorse = async (newHorse: Horse) => {
