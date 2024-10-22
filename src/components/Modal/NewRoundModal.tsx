@@ -10,7 +10,7 @@ import {
   Stack,
   Select
 } from '@chakra-ui/react'
-import { FC } from 'react'
+import { FC, SetStateAction } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import './newRoundModal.scss'
 import { addRound } from 'services/competitions.service'
@@ -20,7 +20,7 @@ import { useHorses } from 'context/horse.context'
 interface NewRoundModalProps {
   isOpen: boolean
   onClose: () => void
-  setCompetitions: (value: React.SetStateAction<Round[]>) => void
+  setCompetitions: (value: SetStateAction<Round[]>) => void
 }
 
 type FormValues = {

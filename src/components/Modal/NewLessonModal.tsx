@@ -10,7 +10,7 @@ import {
   Select,
   Stack
 } from '@chakra-ui/react'
-import { FC } from 'react'
+import { FC, SetStateAction } from 'react'
 import { Discipline } from 'enums/discipline.enum'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Lesson } from 'types/lesson.type'
@@ -28,11 +28,12 @@ type FormValues = {
 interface NewLessonModalProps {
   isOpen: boolean
   onClose: () => void
+  setLessons: (value: SetStateAction<Lesson[]>) => void
 }
 
 const Coaches = ['Aubéry', 'Pierre', 'Alix']
 
-const NewLessonModal: FC<NewLessonModalProps> = ({ isOpen, onClose }) => {
+const NewLessonModal: FC<NewLessonModalProps> = ({ isOpen, onClose, setLessons }) => {
   const { register, handleSubmit } = useForm<FormValues>()
 
   const { horses } = useHorses()
@@ -47,6 +48,7 @@ const NewLessonModal: FC<NewLessonModalProps> = ({ isOpen, onClose }) => {
         rating: data.rating || 0
       }
       await addLesson(newLesson)
+      setLessons((prev) => [...prev, newLesson])
       onClose()
     } catch (error) {
       console.error('Error adding class:', error)

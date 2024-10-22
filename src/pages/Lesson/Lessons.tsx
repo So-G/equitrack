@@ -20,7 +20,8 @@ export const Lessons = () => {
       discipline: lesson.discipline,
       instructor: lesson.instructor,
       horse: lesson.horse,
-      rating: lesson.rating
+      rating: lesson.rating,
+      comments: lesson.comments
     }))
   }
 
@@ -53,7 +54,7 @@ export const Lessons = () => {
         <h1>2024-2025</h1>
         <LessonTable data={lessons} setData={setLessons} />
       </div>
-      <NewLessonModal isOpen={isModalOpen} onClose={closeModal} />
+      <NewLessonModal isOpen={isModalOpen} onClose={closeModal} setLessons={setLessons} />
     </div>
   )
 }

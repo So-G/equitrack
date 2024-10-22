@@ -7,10 +7,12 @@
   justify-content: center;
   height: 100vh;
   background-color: colors.$dusky-cocoa;
+  padding-top: 1rem;
+  overflow-y: auto;
 }
 
 .content {
-  margin-top: 3rem;
+  margin-block: 3rem;
 }
 
 h1 {

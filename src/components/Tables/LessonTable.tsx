@@ -1,4 +1,14 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, IconButton } from '@chakra-ui/react'
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableContainer,
+  IconButton,
+  Tooltip
+} from '@chakra-ui/react'
 
 import {
   createColumnHelper,
@@ -13,6 +23,8 @@ import { format } from 'date-fns'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { deleteLesson } from 'services/lessons.service'
 import { Dispatch, SetStateAction } from 'react'
+import { Activity, HorseToy } from 'tabler-icons-react'
+
 const columnHelper = createColumnHelper<Lesson>()
 
 export const LessonTable = ({
@@ -54,6 +66,20 @@ export const LessonTable = ({
       header: 'Rating',
       cell: (info) => info.renderValue()
     }),
+    columnHelper.display({
+      header: 'Comment',
+      cell: (info) => (
+        <Tooltip label={'rr'} closeOnClick>
+          <IconButton
+            icon={<HorseToy />}
+            aria-label={''}
+            bg="transparent"
+            onClick={() => console.log(info.row.original.comments)}
+          />
+        </Tooltip>
+      )
+    }),
+
     columnHelper.display({
       header: 'Actions',
       cell: (info) => (
