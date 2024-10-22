@@ -23,7 +23,7 @@ import { format } from 'date-fns'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { deleteLesson } from 'services/lessons.service'
 import { Dispatch, SetStateAction } from 'react'
-import { Activity, HorseToy } from 'tabler-icons-react'
+import { HorseToy } from 'tabler-icons-react'
 
 const columnHelper = createColumnHelper<Lesson>()
 
