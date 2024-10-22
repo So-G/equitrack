@@ -5,9 +5,9 @@ export type Lesson = {
   id?: string
   horse: string
   date: string
-  day: Day
+  day?: Day
   coach: string
   discipline: Discipline
   rating?: number
-  showMore?: string
+  comments?: string
 }

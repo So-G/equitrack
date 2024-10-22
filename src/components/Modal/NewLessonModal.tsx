@@ -15,12 +15,10 @@ import { Discipline } from 'enums/discipline.enum'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Lesson } from 'types/lesson.type'
 import { addLesson } from 'services/lessons.service'
-import { Day } from 'enums/day.enum'
 import { useHorses } from 'context/horse.context'
 
 type FormValues = {
   date: string
-  day: Day
   hour: string
   discipline: Discipline
   horse: string
@@ -43,7 +41,6 @@ const NewLessonModal: FC<NewLessonModalProps> = ({ isOpen, onClose }) => {
     try {
       const newLesson: Lesson = {
         date: data.date,
-        day: data.day,
         discipline: data.discipline,
         horse: data.horse,
         coach: data.coach,
