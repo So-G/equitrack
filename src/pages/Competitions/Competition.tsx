@@ -23,7 +23,8 @@ export const Competition = () => {
       result: round.result || '',
       season: round.season || '',
       participants: round.participants || '',
-      quarter: round.quarter
+      quarter: round.quarter,
+      pictures: round.pictures
     }))
   }
 
@@ -46,7 +47,7 @@ export const Competition = () => {
   return (
     <div className={styles.competitionPage}>
       <div className={styles.content}>
-        <h1>Competition</h1>
+        <h1>Saison 2024-2025</h1>
         <Button
           bg="black"
           color="white"

@@ -69,7 +69,7 @@ export const LessonTable = ({
     columnHelper.display({
       header: 'Comment',
       cell: (info) => (
-        <Tooltip label={'rr'} closeOnClick>
+        <Tooltip label={info.row.original.comments} closeOnClick>
           <IconButton
             icon={<HorseToy />}
             aria-label="show comments"

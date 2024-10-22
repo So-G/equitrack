@@ -11,6 +11,7 @@ import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import { deleteRound } from 'services/competitions.service'
 import { Dispatch, SetStateAction } from 'react'
 import { getShortDate } from 'helpers/date.helper'
+import { Camera } from 'tabler-icons-react'
 
 const columnHelper = createColumnHelper<Round>()
 
@@ -55,6 +56,15 @@ export const CompetitionTable = ({
     }),
     columnHelper.accessor('quarter', {
       header: 'Quart'
+    }),
+
+    columnHelper.display({
+      header: 'Photos',
+      cell: (info) => (
+        <a href={info.row.original.pictures} target="_blank" rel="noreferrer">
+          <Camera />
+        </a>
+      )
     }),
 
     columnHelper.display({

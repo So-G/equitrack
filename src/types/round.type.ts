@@ -10,4 +10,5 @@ export type Round = {
   season: string
   participants?: string
   quarter?: string
+  pictures?: string
 }
