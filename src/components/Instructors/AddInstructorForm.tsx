@@ -15,7 +15,6 @@ const AddInstructorForm = () => {
 
   const handleAddInstructor: SubmitHandler<FormValues> = (data) => {
     console.log('adding instructor')
-    console.log(data)
   }
 
   return (

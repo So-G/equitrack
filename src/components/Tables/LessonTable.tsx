@@ -72,8 +72,9 @@ export const LessonTable = ({
         <Tooltip label={'rr'} closeOnClick>
           <IconButton
             icon={<HorseToy />}
-            aria-label={''}
+            aria-label="show comments"
             bg="transparent"
+            marginBlock="0"
             onClick={() => console.log(info.row.original.comments)}
           />
         </Tooltip>
