@@ -91,6 +91,7 @@ export const LessonTable = ({
             color="#5f7470"
             bg="transparent"
             marginBlock="0"
+            _hover={{ bg: 'transparent', color: '#e06c9f' }}
             icon={<EditIcon />}
             onClick={() => handleEdit(info.row.original)}
           />
@@ -101,6 +102,7 @@ export const LessonTable = ({
             color="#5f7470"
             bg="transparent"
             marginBlock="0"
+            _hover={{ bg: 'transparent', color: '#e06c9f' }}
             onClick={() => handleDelete(info.row.original)}
           />
         </div>
