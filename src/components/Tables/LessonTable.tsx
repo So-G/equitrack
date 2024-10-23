@@ -75,6 +75,7 @@ export const LessonTable = ({
             aria-label="show comments"
             bg="transparent"
             marginBlock="0"
+            _hover={{ bg: 'transparent', color: '#e06c9f' }}
             onClick={() => console.log(info.row.original.comments)}
           />
         </Tooltip>
