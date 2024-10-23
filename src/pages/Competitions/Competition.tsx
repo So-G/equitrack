@@ -1,10 +1,11 @@
 import styles from './competition.module.scss'
 import NewRoundModal from 'components/Modal/NewRoundModal'
-import { Button } from '@chakra-ui/react'
+import { Button, IconButton } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { getCompetitions } from 'services/competitions.service'
 import { Round } from 'types/round.type'
 import { CompetitionTable } from 'components/Tables/CompetitionTable'
+import { ArrowLeft, ArrowRight } from 'tabler-icons-react'
 
 export const Competition = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -41,13 +42,35 @@ export const Competition = () => {
 
     fetchCompetitions()
   }, [])
-
+  const getSeason = competitions[0]?.season
+  const currentSeason = competitions.filter((round) => round.season === getSeason)
   const totalPoints = competitions.reduce((acc, round) => acc + round.points, 0)
 
   return (
     <div className={styles.competitionPage}>
       <div className={styles.content}>
-        <h1>Saison 2024-2025</h1>
+        <div className={styles.title}>
+          <IconButton
+            aria-label="previous season"
+            icon={<ArrowLeft />}
+            marginBlock="0"
+            bg="transparent"
+            color="#f5e5d1"
+            _hover={{ bg: 'transparent', color: 'black' }}
+            onClick={() => console.log('go to previous season')}
+          />
+          <h1 className={styles.season}>Saison {getSeason}</h1>
+          {!currentSeason && (
+            <IconButton
+              aria-label="next season"
+              icon={<ArrowRight />}
+              marginBlock="0"
+              bg="transparent"
+              color="#f5e5d1"
+              _hover={{ bg: 'transparent', color: 'black' }}
+            />
+          )}
+        </div>
         <Button
           bg="black"
           color="white"

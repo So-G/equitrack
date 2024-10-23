@@ -18,3 +18,13 @@
   flex-direction: row;
   justify-content: end;
 }
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.season {
+  margin-inline: 2rem;
+}
