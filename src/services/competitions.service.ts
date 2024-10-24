@@ -1,10 +1,28 @@
-import { collection, getDocs, addDoc, deleteDoc, doc, orderBy, query } from 'firebase/firestore'
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+  orderBy,
+  query,
+  where
+} from 'firebase/firestore'
 import { db } from '../firebase'
 import { Round } from 'types/round.type'
 
-export async function getCompetitions() {
+export async function getCompetitions(season?: string) {
   try {
-    const competitionsQuery = query(collection(db, 'round'), orderBy('date', 'asc'))
+    let competitionsQuery = query(collection(db, 'round'), orderBy('date', 'asc'))
+
+    if (season) {
+      competitionsQuery = query(
+        collection(db, 'round'),
+        where('season', '==', season),
+        orderBy('date', 'asc')
+      )
+    }
+
     const querySnapshot = await getDocs(competitionsQuery)
     const competitions = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
     return competitions

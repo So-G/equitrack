@@ -11,4 +11,5 @@ export type Round = {
   participants?: string
   quarter?: string
   pictures?: string
+  detailedResults?: string
 }
